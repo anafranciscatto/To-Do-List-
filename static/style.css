@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  width: 100vw; /* Usando 100% da largura da tela */
+  height: 100vh; /* Usando 100% da altura da tela */
+  font-family: "Playfair Display", serif;
+  transition: background 0.3s, color 0.3s;
+  background-color: #fff;
+  color: #000;
+  background-image: url('/static/IMG/fundo-to-do.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow-x: hidden; /* Desativa a rolagem horizontal */
+}
+
+body.dark {
+    background-color: #000000; /* Modo escuro */
+    color: #fff; /* Texto branco para o modo escuro */
+}
+
+header {
+  width: 100vw;
+  background: linear-gradient(to bottom, #0000ff36, transparent);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: hidden; /* Desativa a rolagem horizontal no header */
+}
+
+hr {
+    width: 170px;
+    border: solid 1.5px black;
+}
+
+.img-modo {
+    width: 30px;
+    height: 30px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-modo img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+
+/* Principal */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Estilos para os campos de entrada e layout do formulário */
+.form-container {
+  background: #fff9f96b;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column; /* Definindo flex em coluna para tela pequena */
+}
+
+/* Organizando os campos de forma flexível */
+#metaForm {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os elementos se movam para a linha seguinte em telas menores */
+  gap: 20px;
+}
+
+.form-group {
+  width: 100%; /* Cada campo ocupa 100% de largura na tela pequena */
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilizando a área de texto (descrição) */
+.form-group textarea {
+  resize: vertical; /* Permite redimensionamento vertical */
+  min-height: 80px; /* Altura mínima */
+}
+
+/* Ajustando o botão */
+.button1 {
+  font-size: 16px;
+  font-weight: 400;
+  height: 35px;
+  width: 150px;
+  border: 0px solid;
+  background-image: linear-gradient(45deg, blue, #00f0a0, blue);
+  background-size: 500% 400%;
+  color: white;
+  border-radius: 50px;
+  transition: 0.6s all;
+  margin: 20px auto;
+}
+
+.button1:hover {
+  background-position: 75% 50%;
+  transform: perspective(100px)
+}
+
+.button1:active {
+  transform: scale(0.95);
+  transition: 0.1s;
+}
+
+/* Layout para telas grandes (acima de 700px) */
+@media (min-width: 701px) {
+  /* Ajusta os campos para aparecerem em linha */
+  .form-group {
+    width: 48%; /* Cada campo ocupa quase metade da largura */
+  }
+
+  /* Garantindo que o botão e a descrição fiquem em linha no máximo */
+  .form-group.textarea-group {
+    width: 100%;
+  }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 700px) {
+  .form-group {
+    width: 100%; /* Para telas menores, todos os campos ficam em coluna */
+  }
+}
+
+/* Ajuste do botão e outros elementos */
+.button1 {
+  font-size: 16px;
+  font-weight: 400;
+  height: 35px;
+  width: 150px;
+  border: 0px solid;
+  background-image: linear-gradient(45deg, blue, #00f0a0, blue);
+  background-size: 500% 400%;
+  color: white;
+  border-radius: 50px;
+  transition: 0.6s all;
+  margin: 0 auto;
+}
+
+.button1:hover {
+  background-position: 75% 50%;
+  transform: perspective(100px)
+}
+
+.button1:active {
+  transform: scale(0.95);
+  transition: 0.1s;
+}
+
+/* Exibição das metas */
+#cards-container {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 10px;
+  width: 100%; /* Garante que o container de cards ocupe toda a largura disponível */
+  max-width: 100%; /* Impede que o container de cards ultrapasse a largura da tela */
+  overflow-x: hidden; /* Desativa a rolagem horizontal */
+}
+
+.card {
+  background: #ffffffcc;
+  border-radius: 16px;
+  padding: 15px; /* Diminuído o padding */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Menor sombra */
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-left: 6px solid transparent;
+  height: 200px; /* Reduzindo a altura dos cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%; /* Certifique-se de que os cards não excedam a largura do container */
+}
+
+.card:hover {
+  transform: translateY(-8px); /* Levanta o card ao passar o mouse */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Menos sombra no hover */
+}
+
+/* Diferenciação pelas cores */
+.card.alta {
+  border-left-color: #ff5c5c; /* Vermelho */
+}
+
+.card.media {
+  border-left-color: #ffbf00; /* Amarelo */
+}
+
+.card.baixa {
+  border-left-color: #5cff5c; /* Verde */
+}
+
+/* Estilização do conteúdo do card */
+.card h4 {
+  font-size: 1.1rem; /* Reduzido o tamanho da fonte */
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333333;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.card p {
+  font-size: 0.9rem; /* Reduzido o tamanho do texto */
+  color: #666666;
+  margin-top: 5px;
+  line-height: 1.6;
+}
+
+.card {
+  background: #ffffffcc;
+  border-radius: 16px;
+  padding: 20px; /* Reduziu o padding para diminuir o tamanho do card */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease-out, transform 0.3s ease-out;
+  border-left: 6px solid transparent;
+  height: 200px; /* Reduziu a altura do card */
+  width: 80%; /* A largura foi reduzida para 80% da largura do container */
+  max-width: 400px; /* Limitando a largura máxima */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  margin: 10px auto; /* Adicionando uma margem para centralizar o card */
+}
+
+.container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.container input {
+  display: none;
+}
+
+.container svg {
+  overflow: visible;
+}
+
+.path {
+  fill: none;
+  stroke: black; /* Muda a cor para preto */
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.container input:checked ~ svg .path {
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}
+
+/* Responsividade - Quando a tela é pequena, apenas 1 card por linha */
+@media (max-width: 900px) {
+  #cards-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards por linha em telas médias */
+  }
+}
+
+@media (max-width: 600px) {
+  #cards-container {
+      grid-template-columns: 1fr; /* 1 card por linha em telas menores */
+      align-items: center;
+  }
+
+  .card {
+      padding: 15px; /* Diminuído o padding para dispositivos menores */
+      height: auto; /* Deixa a altura do card variável */
+  }
+}
